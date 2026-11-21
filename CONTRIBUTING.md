@@ -34,17 +34,18 @@ As the author is still actively learning Android development, please be kind, co
 
 ---
 
-## 🎨 UI & Asset Submission Guidelines
+## 🎨 UI & Design Guidelines — Inspire & Innovate!
 
-We want to make Echofy look distinct and unique! If you want to contribute UI designs, icons, or vector drawables:
+We want Echofy to look and feel like an absolute powerhouse music player!
 
-1. **Discuss Before You Code**:
-   - Please open an **Issue / Feature Request** before submitting major design overhauls. Let's align on the visual direction first!
-2. **Strictly No Copyrighted Assets**:
-   - All contributed icons, artwork, illustrations, or vector drawables must be **100% original**, public domain (CC0), or released under a compatible open-source license.
-   - Do **not** copy proprietary artwork, logos, or brand marks from Spotify, YouTube Music, or other commercial apps.
-3. **Responsive Design**:
-   - Ensure UI layouts support dynamic theming (Material Design 3) and look good on small phones, large phones, and tablets.
+1. **Take Inspiration from the Best**:
+   - Love Spotify's sleek player UI? YouTube Music's intuitive navigation? Apple Music's fluid lyrics view? **We love them too!** Feel free to borrow, combine, and elevate the best UI/UX concepts and layouts from anywhere across the music streaming world.
+2. **Make it Look & Feel Premium**:
+   - Whether it's silky-smooth Compose animations, dynamic color theming, glassmorphic blur effects, or Spotify-grade layout Polish, all modern design ideas are welcome.
+3. **Share Your Ideas First**:
+   - Got a cool design idea or Figma mockup? Share it in a **GitHub Issue or Discussion** so the community can hype it up, give feedback, and collaborate on building it into Jetpack Compose.
+4. **Responsive & Adaptive**:
+   - Ensure UI improvements look gorgeous on phones of all aspect ratios, foldables, and tablets.
 
 ---
 
@@ -72,4 +73,4 @@ To ensure quick and smooth reviews, every Pull Request must adhere to the follow
 ## 💬 Community & Code of Conduct
 
 - Be welcoming, respectful, and encouraging to fellow contributors regardless of experience level.
-- Constructive feedback on code architecture is always celebrated. Let's learn together!
+- Constructive feedback on code architecture and design is always celebrated. Let's learn, innovate, and build something incredible together!
