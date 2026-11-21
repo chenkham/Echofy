@@ -295,7 +295,7 @@ class EchofyMessagingService : FirebaseMessagingService() {
         val intent =
             when (action) {
                 "open_url", "view" -> {
-                    Intent(Intent.ACTION_VIEW, Uri.parse(data ?: "https://github.com/chenkham/Echofy-android"))
+                    Intent(Intent.ACTION_VIEW, Uri.parse(data ?: "https://github.com/chenkham/Echofy"))
                 }
                 "play_album" -> {
                     Intent(this, MainActivity::class.java).apply {
