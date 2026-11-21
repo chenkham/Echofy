@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.Chenkham.Echofy.R
 import com.Chenkham.Echofy.ui.component.IconButton
-import com.arturo254.opentune.innertube.utils.PoTokenGenerator
+import com.chenkham.Echofy.innertube.utils.PoTokenGenerator
 
 class PoTokenExtractionActivity : ComponentActivity() {
     companion object {

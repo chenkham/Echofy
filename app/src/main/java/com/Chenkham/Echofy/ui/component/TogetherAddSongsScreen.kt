@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.component
+﻿package com.Chenkham.Echofy.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -44,8 +44,8 @@ import androidx.compose.ui.unit.dp
 import com.Chenkham.Echofy.R
 import com.Chenkham.Echofy.models.MediaMetadata
 import com.Chenkham.Echofy.models.toMediaMetadata
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.SongItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

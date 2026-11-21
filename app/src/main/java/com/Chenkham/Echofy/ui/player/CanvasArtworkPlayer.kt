@@ -25,9 +25,9 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
-import com.arturo254.opentune.canvas.CanvasCacheManager
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.YouTubeClient
+import com.chenkham.Echofy.canvas.CanvasCacheManager
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.YouTubeClient
 import okhttp3.OkHttpClient
 import timber.log.Timber
 import java.util.Locale

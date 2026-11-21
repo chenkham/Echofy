@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.main
+﻿package com.Chenkham.Echofy.ui.main
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,7 +20,7 @@ import com.Chenkham.Echofy.constants.PlayerLayoutStyle
 import com.Chenkham.Echofy.constants.PlayerLayoutStyleKey
 import com.Chenkham.Echofy.ui.screens.Screens
 import com.Chenkham.Echofy.utils.rememberEnumPreference
-import com.arturo254.opentune.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.SongItem
 
 @Composable
 fun MainScaffoldBottomBar(

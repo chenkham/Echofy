@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.arturo254.opentune.canvas"
+    namespace = "com.chenkham.Echofy.canvas"
     compileSdk = 36
 
     defaultConfig {

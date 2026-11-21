@@ -1,6 +1,6 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -115,9 +115,9 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.Chenkham.Echofy.R
 import com.Chenkham.Echofy.ui.utils.appBarScrollBehavior
-import com.arturo254.opentune.shazamkit.Shazam
-import com.arturo254.opentune.shazamkit.ShazamSignatureGenerator
-import com.arturo254.opentune.shazamkit.models.RecognitionResult
+import com.chenkham.Echofy.shazamkit.Shazam
+import com.chenkham.Echofy.shazamkit.ShazamSignatureGenerator
+import com.chenkham.Echofy.shazamkit.models.RecognitionResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

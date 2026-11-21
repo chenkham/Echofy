@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.viewmodels
+﻿package com.Chenkham.Echofy.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -9,8 +9,8 @@ import com.Chenkham.Echofy.db.update
 import com.Chenkham.Echofy.enrichment.ReleaseEnrichmentRepository
 import com.Chenkham.Echofy.utils.reportException
 import com.Chenkham.discogs.models.ReleaseInfo
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.AlbumItem
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.AlbumItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

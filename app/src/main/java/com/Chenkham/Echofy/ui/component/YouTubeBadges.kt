@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.component
+﻿package com.Chenkham.Echofy.ui.component
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
@@ -18,9 +18,9 @@ import androidx.media3.exoplayer.offline.Download.STATE_QUEUED
 import com.Chenkham.Echofy.LocalDatabase
 import com.Chenkham.Echofy.LocalDownloadUtil
 import com.Chenkham.Echofy.R
-import com.arturo254.opentune.innertube.models.AlbumItem
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.models.YTItem
+import com.chenkham.Echofy.innertube.models.AlbumItem
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.YTItem
 
 /**
  * Standard badge overlays (liked, library, explicit, download progress) for YouTube items.

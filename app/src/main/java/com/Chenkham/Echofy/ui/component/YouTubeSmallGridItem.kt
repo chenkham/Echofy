@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.component
+﻿package com.Chenkham.Echofy.ui.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -24,9 +24,9 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.Chenkham.Echofy.R
 import com.Chenkham.Echofy.constants.ThumbnailCornerRadius
-import com.arturo254.opentune.innertube.models.ArtistItem
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.models.YTItem
+import com.chenkham.Echofy.innertube.models.ArtistItem
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.YTItem
 import kotlinx.coroutines.CoroutineScope
 
 /**

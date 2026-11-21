@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.db
+﻿package com.Chenkham.Echofy.db
 
 import com.Chenkham.Echofy.constants.AlbumSortType
 import com.Chenkham.Echofy.constants.ArtistSongSortType
@@ -22,10 +22,10 @@ import com.Chenkham.Echofy.extensions.toSQLiteQuery
 import com.Chenkham.Echofy.models.MediaMetadata
 import com.Chenkham.Echofy.models.toMediaMetadata
 import com.Chenkham.Echofy.ui.utils.resize
-import com.arturo254.opentune.innertube.models.PlaylistItem
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.pages.AlbumPage
-import com.arturo254.opentune.innertube.pages.ArtistPage
+import com.chenkham.Echofy.innertube.models.PlaylistItem
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.pages.AlbumPage
+import com.chenkham.Echofy.innertube.pages.ArtistPage
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking

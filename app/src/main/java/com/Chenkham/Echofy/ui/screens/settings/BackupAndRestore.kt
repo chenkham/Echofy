@@ -1,6 +1,6 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -118,7 +118,7 @@ import com.Chenkham.Echofy.R
 import com.Chenkham.Echofy.constants.ShowSpotifyPlaylistsKey
 import com.Chenkham.Echofy.db.entities.Song
 import com.Chenkham.Echofy.spotify.SpotifyAccountViewModel
-import com.arturo254.opentune.spotify.SpotifyAuth
+import com.chenkham.Echofy.spotify.SpotifyAuth
 import com.Chenkham.Echofy.ui.component.Material3SettingsGroup
 import com.Chenkham.Echofy.ui.component.Material3SettingsItem
 import com.Chenkham.Echofy.ui.component.NewActionButton

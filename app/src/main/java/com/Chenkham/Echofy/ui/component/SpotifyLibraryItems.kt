@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.component
+﻿package com.Chenkham.Echofy.ui.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandIn
@@ -36,9 +36,9 @@ import com.Chenkham.Echofy.db.entities.PlaylistEntity
 import com.Chenkham.Echofy.ui.utils.resize
 import com.Chenkham.Echofy.utils.joinByBullet
 import com.Chenkham.Echofy.utils.makeTimeString
-import com.arturo254.opentune.spotify.SpotifyMapper
-import com.arturo254.opentune.spotify.models.SpotifyPlaylist
-import com.arturo254.opentune.spotify.models.SpotifyTrack
+import com.chenkham.Echofy.spotify.SpotifyMapper
+import com.chenkham.Echofy.spotify.models.SpotifyPlaylist
+import com.chenkham.Echofy.spotify.models.SpotifyTrack
 
 @Composable
 fun SpotifyLibraryPlaylistListItem(

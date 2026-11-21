@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.viewmodels
+﻿package com.Chenkham.Echofy.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.SavedStateHandle
@@ -8,8 +8,8 @@ import com.Chenkham.Echofy.constants.HideExplicitKey
 import com.Chenkham.Echofy.utils.dataStore
 import com.Chenkham.Echofy.utils.get
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.pages.BrowseResult
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.pages.BrowseResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow

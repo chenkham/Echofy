@@ -1,7 +1,7 @@
-package com.Chenkham.Echofy.models
+﻿package com.Chenkham.Echofy.models
 
 import com.Chenkham.Echofy.db.entities.LocalItem
-import com.arturo254.opentune.innertube.models.YTItem
+import com.chenkham.Echofy.innertube.models.YTItem
 
 data class SimilarRecommendation(
     val title: LocalItem,

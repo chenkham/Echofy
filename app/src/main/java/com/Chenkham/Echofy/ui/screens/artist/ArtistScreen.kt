@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens.artist
+﻿package com.Chenkham.Echofy.ui.screens.artist
 
 import android.annotation.SuppressLint
 import android.content.ClipData
@@ -94,11 +94,11 @@ import com.Chenkham.Echofy.ui.utils.backToMain
 import com.Chenkham.Echofy.ui.utils.fadingEdge
 import com.Chenkham.Echofy.ui.utils.resize
 import com.Chenkham.Echofy.viewmodels.ArtistViewModel
-import com.arturo254.opentune.innertube.models.AlbumItem
-import com.arturo254.opentune.innertube.models.ArtistItem
-import com.arturo254.opentune.innertube.models.PlaylistItem
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.models.WatchEndpoint
+import com.chenkham.Echofy.innertube.models.AlbumItem
+import com.chenkham.Echofy.innertube.models.ArtistItem
+import com.chenkham.Echofy.innertube.models.PlaylistItem
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.WatchEndpoint
 import com.valentinilk.shimmer.shimmer
 
 @SuppressLint("ServiceCast")

@@ -1,13 +1,13 @@
-package com.Chenkham.Echofy.spotify
+﻿package com.Chenkham.Echofy.spotify
 
 import androidx.media3.common.MediaItem
 import com.Chenkham.Echofy.extensions.toMediaItem
 import com.Chenkham.Echofy.models.MediaMetadata
 import com.Chenkham.Echofy.models.toMediaMetadata
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.spotify.SpotifyMapper
-import com.arturo254.opentune.spotify.models.SpotifyTrack
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.spotify.SpotifyMapper
+import com.chenkham.Echofy.spotify.models.SpotifyTrack
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock

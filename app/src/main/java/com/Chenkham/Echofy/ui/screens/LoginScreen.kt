@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens
+﻿package com.Chenkham.Echofy.ui.screens
 
 import android.annotation.SuppressLint
 import android.webkit.CookieManager
@@ -37,8 +37,8 @@ import com.Chenkham.Echofy.ui.component.IconButton
 import com.Chenkham.Echofy.ui.utils.backToMain
 import com.Chenkham.Echofy.utils.rememberPreference
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.utils.parseCookieString
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.utils.parseCookieString
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

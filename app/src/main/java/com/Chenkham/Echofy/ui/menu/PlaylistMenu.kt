@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.menu
+﻿package com.Chenkham.Echofy.ui.menu
 
 import android.content.Intent
 import android.widget.Toast
@@ -51,8 +51,8 @@ import com.Chenkham.Echofy.ui.component.GridMenuItem
 import com.Chenkham.Echofy.ui.component.LocalAdManager
 import com.Chenkham.Echofy.ui.component.TextFieldDialog
 import com.Chenkham.Echofy.utils.rememberPreference
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.utils.parseCookieString
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.utils.parseCookieString
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

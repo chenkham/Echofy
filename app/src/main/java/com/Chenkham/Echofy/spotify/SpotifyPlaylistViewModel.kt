@@ -12,8 +12,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.spotify.models.SpotifyPlaylist
-import com.arturo254.opentune.spotify.models.SpotifyTrack
+import com.chenkham.Echofy.spotify.models.SpotifyPlaylist
+import com.chenkham.Echofy.spotify.models.SpotifyTrack
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers

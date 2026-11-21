@@ -1,6 +1,6 @@
 ﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -53,10 +53,10 @@ import com.Chenkham.Echofy.extensions.toSQLiteQuery
 import com.Chenkham.Echofy.models.MediaMetadata
 import com.Chenkham.Echofy.models.toMediaMetadata
 import com.Chenkham.Echofy.ui.utils.resize
-import com.arturo254.opentune.innertube.models.PlaylistItem
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.pages.AlbumPage
-import com.arturo254.opentune.innertube.pages.ArtistPage
+import com.chenkham.Echofy.innertube.models.PlaylistItem
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.pages.AlbumPage
+import com.chenkham.Echofy.innertube.pages.ArtistPage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map

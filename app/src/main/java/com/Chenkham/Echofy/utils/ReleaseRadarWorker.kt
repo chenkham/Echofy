@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.utils
+﻿package com.Chenkham.Echofy.utils
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -21,7 +21,7 @@ import com.Chenkham.Echofy.constants.RELEASE_RADAR_SEEN_LIMIT
 import com.Chenkham.Echofy.constants.ReleaseRadarEnabledKey
 import com.Chenkham.Echofy.constants.ReleaseRadarSeenIdsKey
 import com.Chenkham.Echofy.di.ReleaseRadarEntryPoint
-import com.arturo254.opentune.innertube.YouTube
+import com.chenkham.Echofy.innertube.YouTube
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.flow.first
 import java.util.concurrent.TimeUnit

@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.playback
+﻿package com.Chenkham.Echofy.playback
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -20,7 +20,7 @@ import com.Chenkham.Echofy.di.DownloadCache
 import com.Chenkham.Echofy.di.PlayerCache
 import com.Chenkham.Echofy.utils.YTPlayerUtils
 import com.Chenkham.Echofy.utils.enumPreference
-import com.arturo254.opentune.innertube.YouTube
+import com.chenkham.Echofy.innertube.YouTube
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

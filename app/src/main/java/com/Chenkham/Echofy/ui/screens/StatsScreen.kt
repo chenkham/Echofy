@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens
+﻿package com.Chenkham.Echofy.ui.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -47,7 +47,7 @@ import com.Chenkham.Echofy.ui.menu.SongMenu
 import com.Chenkham.Echofy.ui.utils.backToMain
 import com.Chenkham.Echofy.utils.makeTimeString
 import com.Chenkham.Echofy.viewmodels.StatsViewModel
-import com.arturo254.opentune.innertube.models.WatchEndpoint
+import com.chenkham.Echofy.innertube.models.WatchEndpoint
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -224,7 +224,7 @@ fun StatsScreen(
                         )
                     }
 
-                    // OpenTune Note-Type Insight Action Button
+                    // Insight Action Button
                     IconButton(onClick = { showInsightDialog = true }) {
                         Icon(
                             painter = painterResource(R.drawable.calendar_today),
@@ -317,7 +317,7 @@ fun StatsScreen(
                     )
                 }
 
-                // 1. Favourite Artist Card (OpenTune layout: media_1787641439229.png)
+                // 1. Favourite Artist Card
                 if (favoriteArtist != null) {
                     item(key = "favArtistCard") {
                         Card(
@@ -383,7 +383,7 @@ fun StatsScreen(
                     }
                 }
 
-                // 2. Favourite Song Card (OpenTune layout: media_1787641439229.png)
+                // 2. Favourite Song Card
                 if (favoriteSong != null) {
                     item(key = "favSongCard") {
                         Card(
@@ -452,7 +452,7 @@ fun StatsScreen(
                     }
                 }
 
-                // 3. Total Time Listened Section (OpenTune collage circle + big number)
+                // 3. Total Time Listened Section
                 if (totalTimeListenedMs > 0) {
                     item(key = "totalTimeCard") {
                         Row(

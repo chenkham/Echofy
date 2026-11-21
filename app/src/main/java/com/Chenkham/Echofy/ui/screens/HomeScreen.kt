@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens
+﻿package com.Chenkham.Echofy.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -122,13 +122,13 @@ import com.Chenkham.Echofy.ui.utils.ImmutablePlaybackInfo
 import com.Chenkham.Echofy.ui.utils.SnapLayoutInfoProvider
 import com.Chenkham.Echofy.utils.rememberPreference
 import com.Chenkham.Echofy.viewmodels.HomeViewModel
-import com.arturo254.opentune.innertube.models.AlbumItem
-import com.arturo254.opentune.innertube.models.ArtistItem
-import com.arturo254.opentune.innertube.models.PlaylistItem
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.models.WatchEndpoint
-import com.arturo254.opentune.innertube.models.YTItem
-import com.arturo254.opentune.innertube.utils.parseCookieString
+import com.chenkham.Echofy.innertube.models.AlbumItem
+import com.chenkham.Echofy.innertube.models.ArtistItem
+import com.chenkham.Echofy.innertube.models.PlaylistItem
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.WatchEndpoint
+import com.chenkham.Echofy.innertube.models.YTItem
+import com.chenkham.Echofy.innertube.utils.parseCookieString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch

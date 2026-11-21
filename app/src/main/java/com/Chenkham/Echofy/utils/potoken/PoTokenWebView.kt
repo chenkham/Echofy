@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.utils.potoken
+﻿package com.Chenkham.Echofy.utils.potoken
 
 import android.content.Context
 import android.webkit.ConsoleMessage
@@ -8,7 +8,7 @@ import android.webkit.WebView
 import androidx.annotation.MainThread
 import androidx.collection.ArrayMap
 import com.Chenkham.Echofy.BuildConfig
-import com.arturo254.opentune.innertube.YouTube
+import com.chenkham.Echofy.innertube.YouTube
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope

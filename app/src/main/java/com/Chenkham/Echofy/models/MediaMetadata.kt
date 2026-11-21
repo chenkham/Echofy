@@ -1,6 +1,6 @@
 ﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -10,7 +10,7 @@ import androidx.compose.runtime.Immutable
 import com.Chenkham.Echofy.db.entities.Song
 import com.Chenkham.Echofy.db.entities.SongEntity
 import com.Chenkham.Echofy.ui.utils.resize
-import com.arturo254.opentune.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.SongItem
 import java.io.Serializable
 import java.time.LocalDateTime
 

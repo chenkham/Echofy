@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.viewmodels
+﻿package com.Chenkham.Echofy.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,7 +10,7 @@ import com.Chenkham.Echofy.ui.screens.OptionStats
 import com.Chenkham.Echofy.utils.ListeningStreak
 import com.Chenkham.Echofy.utils.dataStore
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.innertube.YouTube
+import com.chenkham.Echofy.innertube.YouTube
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.ExperimentalCoroutinesApi

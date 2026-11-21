@@ -1,10 +1,10 @@
-package com.Chenkham.Echofy.lyrics
+﻿package com.Chenkham.Echofy.lyrics
 
 import android.content.Context
 import com.Chenkham.Echofy.constants.EnableBetterLyricsKey
 import com.Chenkham.Echofy.utils.dataStore
 import com.Chenkham.Echofy.utils.get
-import com.arturo254.opentune.betterlyrics.BetterLyrics
+import com.chenkham.Echofy.betterlyrics.BetterLyrics
 import timber.log.Timber
 
 object BetterLyricsProvider : LyricsProvider {

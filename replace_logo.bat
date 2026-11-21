@@ -10,7 +10,6 @@ cd /d "%~dp0"
 REM Delete old vector files
 echo Deleting old vector logo files...
 del /f "app\src\main\res\drawable\echofy.xml" 2>nul
-del /f "app\src\main\res\drawable\opentune.xml" 2>nul
 
 REM Copy new PNG logo (using icon_logo.png - no background)
 echo Copying new PNG logo (icon_logo.png)...

@@ -1,7 +1,7 @@
-package com.Chenkham.Echofy.utils
+﻿package com.Chenkham.Echofy.utils
 
 import com.Chenkham.Echofy.models.MediaMetadata
-import com.arturo254.opentune.lastfm.LastFM
+import com.chenkham.Echofy.lastfm.LastFM
 import kotlinx.coroutines.*
 import timber.log.Timber
 import kotlin.math.min

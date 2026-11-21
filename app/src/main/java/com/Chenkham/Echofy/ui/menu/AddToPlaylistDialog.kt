@@ -1,6 +1,6 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -67,8 +67,8 @@ import com.Chenkham.Echofy.ui.component.CreatePlaylistDialog
 import com.Chenkham.Echofy.ui.component.DefaultDialog
 import com.Chenkham.Echofy.ui.component.PlaylistListItem
 import com.Chenkham.Echofy.utils.rememberPreference
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.utils.parseCookieString
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.utils.parseCookieString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

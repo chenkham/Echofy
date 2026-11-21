@@ -20,11 +20,11 @@ import com.Chenkham.Echofy.constants.SpotifySpKeyKey
 import com.Chenkham.Echofy.utils.clearWebAuthSession
 import com.Chenkham.Echofy.utils.dataStore
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.spotify.Spotify
-import com.arturo254.opentune.spotify.SpotifyAuth
-import com.arturo254.opentune.spotify.models.SpotifyPlaylist
-import com.arturo254.opentune.spotify.models.SpotifyPlaylistTracksRef
-import com.arturo254.opentune.spotify.models.SpotifyTrack
+import com.chenkham.Echofy.spotify.Spotify
+import com.chenkham.Echofy.spotify.SpotifyAuth
+import com.chenkham.Echofy.spotify.models.SpotifyPlaylist
+import com.chenkham.Echofy.spotify.models.SpotifyPlaylistTracksRef
+import com.chenkham.Echofy.spotify.models.SpotifyTrack
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers

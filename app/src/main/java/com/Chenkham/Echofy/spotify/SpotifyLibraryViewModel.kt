@@ -9,7 +9,7 @@ package com.Chenkham.Echofy.spotify
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.arturo254.opentune.spotify.models.SpotifyPlaylist
+import com.chenkham.Echofy.spotify.models.SpotifyPlaylist
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted

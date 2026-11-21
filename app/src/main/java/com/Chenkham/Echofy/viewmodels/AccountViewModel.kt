@@ -1,13 +1,13 @@
-package com.Chenkham.Echofy.viewmodels
+﻿package com.Chenkham.Echofy.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.AlbumItem
-import com.arturo254.opentune.innertube.models.ArtistItem
-import com.arturo254.opentune.innertube.models.PlaylistItem
-import com.arturo254.opentune.innertube.utils.completed
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.AlbumItem
+import com.chenkham.Echofy.innertube.models.ArtistItem
+import com.chenkham.Echofy.innertube.models.PlaylistItem
+import com.chenkham.Echofy.innertube.utils.completed
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

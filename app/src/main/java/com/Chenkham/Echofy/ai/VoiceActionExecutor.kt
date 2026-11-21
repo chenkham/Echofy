@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ai
+﻿package com.Chenkham.Echofy.ai
 
 import android.media.AudioManager
 import com.Chenkham.Echofy.db.MusicDatabase
@@ -8,9 +8,9 @@ import com.Chenkham.Echofy.db.insert
 import com.Chenkham.Echofy.models.toMediaMetadata
 import com.Chenkham.Echofy.playback.PlayerConnection
 import com.Chenkham.Echofy.playback.queues.YouTubeQueue
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.models.WatchEndpoint
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.WatchEndpoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext

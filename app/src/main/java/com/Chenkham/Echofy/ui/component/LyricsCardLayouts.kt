@@ -1,6 +1,6 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -90,7 +90,7 @@ internal fun LyricsBrandingRow(
             contentAlignment = Alignment.Center,
         ) {
             Image(
-                painter = painterResource(R.drawable.opentune),
+                painter = painterResource(R.drawable.echofy),
                 contentDescription = null,
                 modifier = Modifier.size(15.dp),
                 colorFilter =

@@ -1,6 +1,6 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -11,25 +11,25 @@ import androidx.media3.common.PlaybackException
 import com.Chenkham.Echofy.constants.AudioQuality
 import com.Chenkham.Echofy.constants.PlayerStreamClient
 import com.Chenkham.Echofy.utils.potoken.PoTokenGenerator
-import com.arturo254.opentune.innertube.NewPipeUtils
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.YouTubeClient
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.ANDROID_CREATOR
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.ANDROID_EMBEDDED
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.ANDROID_MUSIC
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.ANDROID_VR_1_43_32
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.ANDROID_VR_1_61_48
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.ANDROID_VR_NO_AUTH
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.IOS
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.IOS_MUSIC
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.IPADOS
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.MOBILE
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.TVHTML5
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.VISIONOS
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.WEB
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.WEB_CREATOR
-import com.arturo254.opentune.innertube.models.YouTubeClient.Companion.WEB_REMIX
-import com.arturo254.opentune.innertube.models.response.PlayerResponse
+import com.chenkham.Echofy.innertube.NewPipeUtils
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.YouTubeClient
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.ANDROID_CREATOR
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.ANDROID_EMBEDDED
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.ANDROID_MUSIC
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.ANDROID_VR_1_43_32
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.ANDROID_VR_1_61_48
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.ANDROID_VR_NO_AUTH
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.IOS
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.IOS_MUSIC
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.IPADOS
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.MOBILE
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.TVHTML5
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.VISIONOS
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.WEB
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.WEB_CREATOR
+import com.chenkham.Echofy.innertube.models.YouTubeClient.Companion.WEB_REMIX
+import com.chenkham.Echofy.innertube.models.response.PlayerResponse
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.OkHttpClient
 import timber.log.Timber
@@ -80,7 +80,7 @@ object YTPlayerUtils {
     /**
      * Generates the WEB PoTokens for this session and publishes them into [YouTube]'s auth state.
      *
-     * OpenTune resolves playback without PoTokens because its first fallback clients (IOS, ANDROID,
+     * Echofy resolves playback without PoTokens because its first fallback clients (IOS, ANDROID,
      * ANDROID_MUSIC, ANDROID_VR) return unciphered direct URLs that GVS serves without one. So this
      * is only worth paying for when those clients have all been refused and a ciphered web stream is
      * the last option. Generating it eagerly costs a WebView round-trip on every track.
@@ -131,7 +131,7 @@ object YTPlayerUtils {
      * Do not use other clients for this because it can result in inconsistent metadata.
      * For example other clients can have different normalization targets (loudnessDb).
      *
-     * [com.arturo254.opentune.innertube.models.YouTubeClient.WEB_REMIX] should be preferred here because currently it is the only client which provides:
+     * [com.chenkham.Echofy.innertube.models.YouTubeClient.WEB_REMIX] should be preferred here because currently it is the only client which provides:
      * - the correct metadata (like loudnessDb)
      * - premium formats
      */

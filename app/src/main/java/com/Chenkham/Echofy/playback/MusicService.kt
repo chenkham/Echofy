@@ -1,4 +1,4 @@
-@file:Suppress("DEPRECATION")
+﻿@file:Suppress("DEPRECATION")
 
 package com.Chenkham.Echofy.playback
 
@@ -178,9 +178,9 @@ import com.Chenkham.Echofy.utils.enumPreference
 import com.Chenkham.Echofy.utils.get
 import com.Chenkham.Echofy.utils.reportException
 import com.Chenkham.jossredconnect.JossRedClient
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.models.WatchEndpoint
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.WatchEndpoint
 import com.google.common.util.concurrent.MoreExecutors
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope

@@ -1,6 +1,6 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -67,7 +67,7 @@ import com.Chenkham.Echofy.ui.component.SwitchPreference
 import com.Chenkham.Echofy.ui.utils.backToMain
 import com.Chenkham.Echofy.utils.rememberPreference
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.lastfm.LastFM
+import com.chenkham.Echofy.lastfm.LastFM
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

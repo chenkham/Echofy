@@ -1,6 +1,6 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -60,8 +60,8 @@ import com.Chenkham.Echofy.models.MediaMetadata
 import com.Chenkham.Echofy.models.toMediaMetadata
 import com.Chenkham.Echofy.ui.component.shimmer.ShimmerHost
 import com.Chenkham.Echofy.ui.component.shimmer.TextPlaceholder
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.MediaInfo
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.MediaInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -111,7 +111,7 @@ fun ShowMediaInfo(
                     runCatching {
                         YouTube.player(
                             videoId = id,
-                            client = com.arturo254.opentune.innertube.models.YouTubeClient.WEB,
+                            client = com.chenkham.Echofy.innertube.models.YouTubeClient.WEB,
                         ).getOrNull()?.videoDetails?.shortDescription
                     }.getOrNull()
                 if (!shortDesc.isNullOrBlank()) {

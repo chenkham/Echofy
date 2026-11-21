@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.main
+﻿package com.Chenkham.Echofy.ui.main
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -36,7 +36,7 @@ import com.Chenkham.Echofy.ui.player.AppleBottomSheetPlayer
 import com.Chenkham.Echofy.ui.player.BottomSheetPlayer
 import com.Chenkham.Echofy.ui.screens.ai.DrivingModeBanner
 import com.Chenkham.Echofy.ui.screens.ai.GoogleAssistantVisualOverlay
-import com.arturo254.opentune.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.SongItem
 
 /**
  * Hosts BottomSheetPlayer, Lyrics, Google Assistant overlay, DrivingModeBanner, and dialogs.

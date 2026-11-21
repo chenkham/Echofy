@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.component
+﻿package com.Chenkham.Echofy.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -33,7 +33,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.Chenkham.Echofy.R
 import com.Chenkham.Echofy.db.entities.Playlist
-import com.arturo254.opentune.spotify.models.SpotifyPlaylist
+import com.chenkham.Echofy.spotify.models.SpotifyPlaylist
 
 @Composable
 internal fun PlaylistPickerScreen(

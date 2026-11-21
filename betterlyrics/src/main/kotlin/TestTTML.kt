@@ -1,10 +1,10 @@
-/*
- * OpenTune Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+﻿/*
+ * Echofy Project (2026)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
-import com.arturo254.opentune.betterlyrics.TTMLParser
+import com.chenkham.Echofy.betterlyrics.TTMLParser
 
 fun main(args: Array<String>) {
     val ttml =

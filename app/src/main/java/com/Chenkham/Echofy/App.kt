@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy
+﻿package com.Chenkham.Echofy
 
 import android.app.Application
 import android.content.Context
@@ -37,8 +37,8 @@ import com.Chenkham.Echofy.utils.dataStore
 import com.Chenkham.Echofy.utils.get
 import com.Chenkham.Echofy.utils.reportException
 import com.Chenkham.kugou.KuGou
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.YouTubeLocale
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.YouTubeLocale
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers

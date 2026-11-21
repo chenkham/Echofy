@@ -1,6 +1,6 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -15,11 +15,11 @@ import com.Chenkham.Echofy.db.MusicDatabase
 import com.Chenkham.Echofy.utils.dataStore
 import com.Chenkham.Echofy.utils.get
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.AlbumItem
-import com.arturo254.opentune.innertube.models.AlbumReleaseType
-import com.arturo254.opentune.innertube.models.filterExplicit
-import com.arturo254.opentune.innertube.models.filterVideo
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.AlbumItem
+import com.chenkham.Echofy.innertube.models.AlbumReleaseType
+import com.chenkham.Echofy.innertube.models.filterExplicit
+import com.chenkham.Echofy.innertube.models.filterVideo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers

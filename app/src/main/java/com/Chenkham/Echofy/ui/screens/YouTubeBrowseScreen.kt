@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens
+﻿package com.Chenkham.Echofy.ui.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
@@ -63,11 +63,11 @@ import com.Chenkham.Echofy.ui.menu.YouTubeSongMenu
 import com.Chenkham.Echofy.ui.utils.SnapLayoutInfoProvider
 import com.Chenkham.Echofy.ui.utils.backToMain
 import com.Chenkham.Echofy.viewmodels.YouTubeBrowseViewModel
-import com.arturo254.opentune.innertube.models.AlbumItem
-import com.arturo254.opentune.innertube.models.ArtistItem
-import com.arturo254.opentune.innertube.models.PlaylistItem
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.models.WatchEndpoint
+import com.chenkham.Echofy.innertube.models.AlbumItem
+import com.chenkham.Echofy.innertube.models.ArtistItem
+import com.chenkham.Echofy.innertube.models.PlaylistItem
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.WatchEndpoint
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable

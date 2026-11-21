@@ -1,6 +1,6 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -99,10 +99,10 @@ import com.Chenkham.Echofy.ui.component.SwitchPreference
 import com.Chenkham.Echofy.ui.utils.backToMain
 import com.Chenkham.Echofy.utils.makeTimeString
 import com.Chenkham.Echofy.utils.rememberPreference
-import com.arturo254.opentune.canvas.CanvasCacheManager
-import com.arturo254.opentune.canvas.providers.CustomCanvasProvider
-import com.arturo254.opentune.canvas.providers.GlobalLog
-import com.arturo254.opentune.canvas.providers.LogEntry
+import com.chenkham.Echofy.canvas.CanvasCacheManager
+import com.chenkham.Echofy.canvas.providers.CustomCanvasProvider
+import com.chenkham.Echofy.canvas.providers.GlobalLog
+import com.chenkham.Echofy.canvas.providers.LogEntry
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch

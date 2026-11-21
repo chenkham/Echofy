@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens
+﻿package com.Chenkham.Echofy.ui.screens
 
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
@@ -82,7 +82,7 @@ import com.Chenkham.Echofy.utils.HistoryExporter
 import com.Chenkham.Echofy.utils.rememberPreference
 import com.Chenkham.Echofy.viewmodels.DateAgo
 import com.Chenkham.Echofy.viewmodels.HistoryViewModel
-import com.arturo254.opentune.innertube.utils.parseCookieString
+import com.chenkham.Echofy.innertube.utils.parseCookieString
 import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)

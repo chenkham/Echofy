@@ -1,6 +1,6 @@
-package com.Chenkham.Echofy.utils
+﻿package com.Chenkham.Echofy.utils
 
-import com.arturo254.opentune.innertube.models.YouTubeClient
+import com.chenkham.Echofy.innertube.models.YouTubeClient
 import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.Request

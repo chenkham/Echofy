@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.menu
+﻿package com.Chenkham.Echofy.ui.menu
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -43,8 +43,8 @@ import com.Chenkham.Echofy.ui.component.ListDialog
 import com.Chenkham.Echofy.ui.component.ListItem
 import com.Chenkham.Echofy.ui.component.PlaylistListItem
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.SongItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens.settings
+﻿package com.Chenkham.Echofy.ui.screens.settings
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -88,7 +88,7 @@ import com.Chenkham.Echofy.ui.component.SettingsCategory
 import com.Chenkham.Echofy.ui.component.SettingsCategoryItem
 import com.Chenkham.Echofy.ui.utils.backToMain
 import com.Chenkham.Echofy.utils.rememberPreference
-import com.arturo254.opentune.innertube.utils.parseCookieString
+import com.chenkham.Echofy.innertube.utils.parseCookieString
 
 @SuppressLint("ObsoleteSdkInt")
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)

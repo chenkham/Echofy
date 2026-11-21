@@ -1,6 +1,6 @@
 ﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -28,11 +28,11 @@ import com.Chenkham.Echofy.utils.PlaylistSuggestionQueryBuilder
 import com.Chenkham.Echofy.utils.SyncUtils
 import com.Chenkham.Echofy.utils.dataStore
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.models.YTItem
-import com.arturo254.opentune.innertube.models.filterExplicit
-import com.arturo254.opentune.innertube.models.filterVideo
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.YTItem
+import com.chenkham.Echofy.innertube.models.filterExplicit
+import com.chenkham.Echofy.innertube.models.filterVideo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -366,7 +366,7 @@ class LocalPlaylistViewModel
         }
 
         suspend fun addSongToPlaylist(
-            song: com.arturo254.opentune.innertube.models.SongItem,
+            song: com.chenkham.Echofy.innertube.models.SongItem,
             browseId: String?,
         ): Boolean {
             return try {

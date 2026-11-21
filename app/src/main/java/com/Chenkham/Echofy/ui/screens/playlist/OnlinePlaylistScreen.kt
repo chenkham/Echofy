@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens.playlist
+﻿package com.Chenkham.Echofy.ui.screens.playlist
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -109,8 +109,8 @@ import com.Chenkham.Echofy.ui.menu.YouTubeSongMenu
 import com.Chenkham.Echofy.ui.utils.ItemWrapper
 import com.Chenkham.Echofy.utils.rememberPreference
 import com.Chenkham.Echofy.viewmodels.OnlinePlaylistViewModel
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.models.WatchEndpoint
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.WatchEndpoint
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable

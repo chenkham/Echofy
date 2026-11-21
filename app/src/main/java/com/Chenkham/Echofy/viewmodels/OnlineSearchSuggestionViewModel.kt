@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.viewmodels
+﻿package com.Chenkham.Echofy.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
@@ -9,11 +9,11 @@ import com.Chenkham.Echofy.db.MusicDatabase
 import com.Chenkham.Echofy.db.entities.SearchHistory
 import com.Chenkham.Echofy.utils.dataStore
 import com.Chenkham.Echofy.utils.get
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.SearchSuggestions
-import com.arturo254.opentune.innertube.models.YTItem
-import com.arturo254.opentune.innertube.models.filterExplicit
-import com.arturo254.opentune.innertube.models.filterVideo
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.SearchSuggestions
+import com.chenkham.Echofy.innertube.models.YTItem
+import com.chenkham.Echofy.innertube.models.filterExplicit
+import com.chenkham.Echofy.innertube.models.filterVideo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.ExperimentalCoroutinesApi

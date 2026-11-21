@@ -1,6 +1,6 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -45,7 +45,7 @@ import com.Chenkham.Echofy.ui.component.LocalMenuState
 import com.Chenkham.Echofy.ui.component.YouTubeListItem
 import com.Chenkham.Echofy.ui.menu.*
 import com.Chenkham.Echofy.viewmodels.OnlineSearchSuggestionViewModel
-import com.arturo254.opentune.innertube.models.*
+import com.chenkham.Echofy.innertube.models.*
 import kotlinx.coroutines.flow.drop
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)

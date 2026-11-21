@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens
+﻿package com.Chenkham.Echofy.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -47,7 +47,7 @@ import com.Chenkham.Echofy.ui.component.IconButton
 import com.Chenkham.Echofy.ui.utils.backToMain
 import com.Chenkham.Echofy.viewmodels.PodcastDetailViewModel
 import com.Chenkham.ytmusicapi.models.Episode
-import com.arturo254.opentune.innertube.models.WatchEndpoint
+import com.chenkham.Echofy.innertube.models.WatchEndpoint
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

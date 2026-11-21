@@ -1,7 +1,7 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
  * Material 3 Expressive - New Release Screen
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -92,8 +92,8 @@ import com.Chenkham.Echofy.ui.menu.YouTubeAlbumMenu
 import com.Chenkham.Echofy.ui.utils.backToMain
 import com.Chenkham.Echofy.viewmodels.NewReleaseUiState
 import com.Chenkham.Echofy.viewmodels.NewReleaseViewModel
-import com.arturo254.opentune.innertube.models.AlbumItem
-import com.arturo254.opentune.innertube.models.AlbumReleaseType
+import com.chenkham.Echofy.innertube.models.AlbumItem
+import com.chenkham.Echofy.innertube.models.AlbumReleaseType
 
 @OptIn(
     ExperimentalFoundationApi::class,

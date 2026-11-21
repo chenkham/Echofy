@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ArchiveTune (2026)
  * ┬® Rukamori ÔÇö github.com/rukamori
  * GPL-3.0 License | Contributors: see git history
@@ -109,8 +109,8 @@ import com.Chenkham.Echofy.ui.utils.backToMain
 import com.Chenkham.Echofy.ui.utils.resize
 import com.Chenkham.Echofy.utils.makeTimeString
 import com.Chenkham.Echofy.utils.rememberPreference
-import com.arturo254.opentune.spotify.SpotifyMapper
-import com.arturo254.opentune.spotify.models.SpotifyTrack
+import com.chenkham.Echofy.spotify.SpotifyMapper
+import com.chenkham.Echofy.spotify.models.SpotifyTrack
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

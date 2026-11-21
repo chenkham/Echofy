@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.viewmodels
+﻿package com.Chenkham.Echofy.viewmodels
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -10,8 +10,8 @@ import com.Chenkham.Echofy.db.MusicDatabase
 import com.Chenkham.Echofy.enrichment.ArtistEnrichment
 import com.Chenkham.Echofy.enrichment.ArtistEnrichmentRepository
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.pages.ArtistPage
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.pages.ArtistPage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

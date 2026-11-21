@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.menu
+﻿package com.Chenkham.Echofy.ui.menu
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -69,8 +69,8 @@ import com.Chenkham.Echofy.ui.component.LocalAdManager
 import com.Chenkham.Echofy.ui.component.SongListItem
 import com.Chenkham.Echofy.ui.component.YouTubeListItem
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.AlbumItem
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.AlbumItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

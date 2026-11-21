@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.component
+﻿package com.Chenkham.Echofy.ui.component
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
@@ -29,7 +29,7 @@ import com.Chenkham.Echofy.constants.InnerTubeCookieKey
 import com.Chenkham.Echofy.db.entities.Playlist
 import com.Chenkham.Echofy.db.entities.PlaylistEntity
 import com.Chenkham.Echofy.utils.dataStore
-import com.arturo254.opentune.innertube.YouTube
+import com.chenkham.Echofy.innertube.YouTube
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map

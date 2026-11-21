@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens.search
+﻿package com.Chenkham.Echofy.ui.screens.search
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -62,18 +62,18 @@ import com.Chenkham.Echofy.ui.menu.YouTubeArtistMenu
 import com.Chenkham.Echofy.ui.menu.YouTubePlaylistMenu
 import com.Chenkham.Echofy.ui.menu.YouTubeSongMenu
 import com.Chenkham.Echofy.viewmodels.OnlineSearchViewModel
-import com.arturo254.opentune.innertube.YouTube.SearchFilter.Companion.FILTER_ALBUM
-import com.arturo254.opentune.innertube.YouTube.SearchFilter.Companion.FILTER_ARTIST
-import com.arturo254.opentune.innertube.YouTube.SearchFilter.Companion.FILTER_COMMUNITY_PLAYLIST
-import com.arturo254.opentune.innertube.YouTube.SearchFilter.Companion.FILTER_FEATURED_PLAYLIST
-import com.arturo254.opentune.innertube.YouTube.SearchFilter.Companion.FILTER_SONG
-import com.arturo254.opentune.innertube.YouTube.SearchFilter.Companion.FILTER_VIDEO
-import com.arturo254.opentune.innertube.models.AlbumItem
-import com.arturo254.opentune.innertube.models.ArtistItem
-import com.arturo254.opentune.innertube.models.PlaylistItem
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.models.WatchEndpoint
-import com.arturo254.opentune.innertube.models.YTItem
+import com.chenkham.Echofy.innertube.YouTube.SearchFilter.Companion.FILTER_ALBUM
+import com.chenkham.Echofy.innertube.YouTube.SearchFilter.Companion.FILTER_ARTIST
+import com.chenkham.Echofy.innertube.YouTube.SearchFilter.Companion.FILTER_COMMUNITY_PLAYLIST
+import com.chenkham.Echofy.innertube.YouTube.SearchFilter.Companion.FILTER_FEATURED_PLAYLIST
+import com.chenkham.Echofy.innertube.YouTube.SearchFilter.Companion.FILTER_SONG
+import com.chenkham.Echofy.innertube.YouTube.SearchFilter.Companion.FILTER_VIDEO
+import com.chenkham.Echofy.innertube.models.AlbumItem
+import com.chenkham.Echofy.innertube.models.ArtistItem
+import com.chenkham.Echofy.innertube.models.PlaylistItem
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.WatchEndpoint
+import com.chenkham.Echofy.innertube.models.YTItem
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)

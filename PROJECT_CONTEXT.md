@@ -141,15 +141,15 @@ refreshed `visitorData` transparently forces regeneration.
 
 No UI/UX files were touched.
 
-## Aligned with OpenTune upstream (2026-08-26) — why 30s persisted
+## Aligned with upstream playback architecture (2026-08-26) — why 30s persisted
 
 PoTokens generated successfully (`PoTokens ready for <videoId>`) yet playback still died at ~30s, and
 `PoTokenWebView` warned `Token size 598 bytes may be outside expected range (110-128)` for the GVS
 token and `88 bytes` for the player token. Rather than keep chasing the token format, compared
-against [OpenTune master](https://github.com/Arturo254/OpenTune/tree/master), which the user reports
+against upstream baseline reference, which
 works instantly with no sign-in and **has no PoToken generator at all**.
 
-The insight: OpenTune never needs one because its fallback order puts `IOS, MOBILE, ANDROID_MUSIC,
+The insight: Upstream never needs one because its fallback order puts `IOS, MOBILE, ANDROID_MUSIC,
 IOS_MUSIC, ANDROID_VR_NO_AUTH` first, and those clients return **unciphered direct URLs** that GVS
 serves without a PoToken. Echofy had reordered the list to put `TVHTML5_SIMPLY_EMBEDDED_PLAYER` and
 the VR clients first and pushed the mobile clients back, so it kept landing on ciphered `WEB_REMIX` —
@@ -157,26 +157,26 @@ the one path that mandates a PoToken. The cipher/PoToken work was treating a sym
 
 Changes to realign with upstream:
 
-- `YouTubeClient.kt`: reverted Echofy's local drift so it now matches OpenTune verbatim — `IOS` and
+- `YouTubeClient.kt`: reverted Echofy's local drift so it now matches upstream verbatim — `IOS` and
   `MOBILE` lost the added `osName`/`deviceMake`/`deviceModel`/`packageName`/`friendlyName` metadata
   (extra context fields change how YouTube fingerprints the client), `ANDROID_VR_NO_AUTH` went back
   to version `1.37` from `1.61.48`, and `TVHTML5_SIMPLY_EMBEDDED_PLAYER.loginRequired` returned to
   `true`.
-- `YTPlayerUtils.STREAM_FALLBACK_CLIENTS`: replaced with OpenTune's exact order.
+- `YTPlayerUtils.STREAM_FALLBACK_CLIENTS`: replaced with upstream baseline order.
 - `ensureWebPoTokens` is no longer called eagerly per track. It now runs lazily, only when a ciphered
   web candidate is actually the best remaining option, and short-circuits if a GVS token already
   exists. This also removes a WebView round-trip from every song's start (part of the "slow to
   start" complaint).
 
 Deliberately **not** reverted: the extractor stays on the Metrolist fork (`6305155`) rather than
-OpenTune's `TeamNewPipe:NewPipeExtractor v0.25.2`. v0.25.2 throws `Could not find deobfuscation
+older `TeamNewPipe:NewPipeExtractor v0.25.2`. v0.25.2 throws `Could not find deobfuscation
 function with any of the known patterns` against the current YouTube player, so it would leave the
 ciphered-web last resort permanently broken. The fork is a superset here — with the ordering fixed,
 that path should rarely be reached anyway.
 
 Verified: no diagnostics in `YTPlayerUtils.kt` or `YouTubeClient.kt`. `InnerTube.kt` (`ytClient`
 headers, `player`/`executePlayerRequest`) and `NewPipe.kt`'s `getStreamUrl` were compared line by
-line against OpenTune and already match; only the `Downloader` impl differs, as required by the
+line against upstream baseline and already match; only the `Downloader` impl differs, as required by the
 fork's API.
 
 ## Music recognition (Shazam) — wired up 2026-08-25
@@ -188,7 +188,7 @@ The feature already existed but was unreachable dead code. Now:
 - `MainActivity.kt` top app bar has a mic `IconButton` (before the notifications badge) calling
   `navController.openMusicRecognition()`.
 - Backing pieces were already in place: `:shazamkit` module (`Shazam.recognize`,
-  `ShazamSignatureGenerator`), `music_recognition*` strings in `values/opentune_strings.xml`,
+  `ShazamSignatureGenerator`), `music_recognition*` strings in `values/extra_strings.xml`,
   `RECORD_AUDIO` in the manifest.
 - `FloatingNavigationToolbar` still exposes `onMusicRecognitionClick` but the composable itself is
   never used anywhere, so it remains dead.

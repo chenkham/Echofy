@@ -1,0 +1,118 @@
+﻿/*
+ * Echofy Project (2026)
+ * Echofy Project
+ * Licensed Under GPL-3.0 | see git history for contributors
+ */
+
+package com.chenkham.Echofy.innertube.models.response
+
+import com.chenkham.Echofy.innertube.models.ResponseContext
+import com.chenkham.Echofy.innertube.models.Thumbnails
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+/**
+ * PlayerResponse with [com.chenkham.Echofy.innertube.models.YouTubeClient.WEB_REMIX] client
+ */
+@Serializable
+data class PlayerResponse(
+    val responseContext: ResponseContext,
+    val playabilityStatus: PlayabilityStatus,
+    val playerConfig: PlayerConfig?,
+    val streamingData: StreamingData?,
+    val videoDetails: VideoDetails?,
+    @SerialName("playbackTracking")
+    val playbackTracking: PlaybackTracking?,
+) {
+    @Serializable
+    data class PlayabilityStatus(
+        val status: String,
+        val reason: String?,
+    )
+
+    @Serializable
+    data class PlayerConfig(
+        val audioConfig: AudioConfig,
+    ) {
+        @Serializable
+        data class AudioConfig(
+            val loudnessDb: Double?,
+            val perceptualLoudnessDb: Double?,
+        )
+    }
+
+    @Serializable
+    data class StreamingData(
+        val formats: List<Format>?,
+        val adaptiveFormats: List<Format>,
+        val expiresInSeconds: Int? = null,
+    ) {
+        @Serializable
+        data class Format(
+            val itag: Int,
+            val url: String?,
+            val mimeType: String,
+            val bitrate: Int,
+            val width: Int?,
+            val height: Int?,
+            val contentLength: Long?,
+            val quality: String,
+            val fps: Int?,
+            val qualityLabel: String?,
+            val averageBitrate: Int?,
+            val audioQuality: String?,
+            val approxDurationMs: String?,
+            val audioSampleRate: Int?,
+            val audioChannels: Int?,
+            val loudnessDb: Double?,
+            val lastModified: Long?,
+            val signatureCipher: String?,
+            val cipher: String?,
+        ) {
+            val isAudio: Boolean
+                get() = mimeType.startsWith("audio/", ignoreCase = true) || width == null
+        }
+    }
+
+    @Serializable
+    data class VideoDetails(
+        val videoId: String,
+        val title: String,
+        val author: String,
+        val channelId: String,
+        val lengthSeconds: String,
+        val musicVideoType: String?,
+        val viewCount: String,
+        val thumbnail: Thumbnails,
+        @SerialName("shortDescription")
+        val shortDescription: String? = null,
+    )
+
+    @Serializable
+    data class PlaybackTracking(
+        @SerialName("videostatsPlaybackUrl")
+        val videostatsPlaybackUrl: VideostatsPlaybackUrl?,
+        @SerialName("videostatsWatchtimeUrl")
+        val videostatsWatchtimeUrl: VideostatsWatchtimeUrl?,
+        @SerialName("atrUrl")
+        val atrUrl: AtrUrl?,
+    ) {
+        @Serializable
+        data class VideostatsPlaybackUrl(
+            @SerialName("baseUrl")
+            val baseUrl: String?,
+        )
+
+        @Serializable
+        data class VideostatsWatchtimeUrl(
+            @SerialName("baseUrl")
+            val baseUrl: String?,
+        )
+
+        @Serializable
+        data class AtrUrl(
+            @SerialName("baseUrl")
+            val baseUrl: String?,
+        )
+    }
+}

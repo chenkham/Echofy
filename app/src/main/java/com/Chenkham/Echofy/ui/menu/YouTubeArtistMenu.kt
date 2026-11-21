@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.menu
+﻿package com.Chenkham.Echofy.ui.menu
 
 import android.content.Intent
 import androidx.compose.foundation.background
@@ -41,7 +41,7 @@ import com.Chenkham.Echofy.R
 import com.Chenkham.Echofy.db.entities.ArtistEntity
 import com.Chenkham.Echofy.playback.queues.YouTubeQueue
 import com.Chenkham.Echofy.ui.component.YouTubeListItem
-import com.arturo254.opentune.innertube.models.ArtistItem
+import com.chenkham.Echofy.innertube.models.ArtistItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

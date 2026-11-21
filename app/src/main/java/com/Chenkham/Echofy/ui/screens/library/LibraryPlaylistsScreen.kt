@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens.library
+﻿package com.Chenkham.Echofy.ui.screens.library
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
@@ -68,7 +68,7 @@ import com.Chenkham.Echofy.ui.component.SortHeader
 import com.Chenkham.Echofy.utils.rememberEnumPreference
 import com.Chenkham.Echofy.utils.rememberPreference
 import com.Chenkham.Echofy.viewmodels.LibraryPlaylistsViewModel
-import com.arturo254.opentune.innertube.utils.parseCookieString
+import com.chenkham.Echofy.innertube.utils.parseCookieString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.UUID

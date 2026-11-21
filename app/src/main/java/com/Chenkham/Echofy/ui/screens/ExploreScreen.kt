@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens
+﻿package com.Chenkham.Echofy.ui.screens
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import android.net.Uri
@@ -681,10 +681,10 @@ private fun MixesTab(viewModel: MixcloudViewModel = hiltViewModel()) {
                                 coroutineScope.launch(Dispatchers.IO) {
                                     val query = if (mix.artistName.isNotBlank()) "${mix.title} ${mix.artistName}" else mix.title
                                     val songItem =
-                                        com.arturo254.opentune.innertube.YouTube.search(query, com.arturo254.opentune.innertube.YouTube.SearchFilter.FILTER_SONG).getOrNull()
-                                            ?.items?.filterIsInstance<com.arturo254.opentune.innertube.models.SongItem>()?.firstOrNull()
-                                            ?: com.arturo254.opentune.innertube.YouTube.search(query, com.arturo254.opentune.innertube.YouTube.SearchFilter.FILTER_VIDEO).getOrNull()
-                                                ?.items?.filterIsInstance<com.arturo254.opentune.innertube.models.SongItem>()?.firstOrNull()
+                                        com.chenkham.Echofy.innertube.YouTube.search(query, com.chenkham.Echofy.innertube.YouTube.SearchFilter.FILTER_SONG).getOrNull()
+                                            ?.items?.filterIsInstance<com.chenkham.Echofy.innertube.models.SongItem>()?.firstOrNull()
+                                            ?: com.chenkham.Echofy.innertube.YouTube.search(query, com.chenkham.Echofy.innertube.YouTube.SearchFilter.FILTER_VIDEO).getOrNull()
+                                                ?.items?.filterIsInstance<com.chenkham.Echofy.innertube.models.SongItem>()?.firstOrNull()
 
                                     withContext(Dispatchers.Main) {
                                         if (songItem != null) {

@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.viewmodels
+﻿package com.Chenkham.Echofy.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -54,7 +54,7 @@ class PodcastDetailViewModel
                 }
 
                 if (!success) {
-                    com.arturo254.opentune.innertube.YouTube.playlist(cleanId).onSuccess { page ->
+                    com.chenkham.Echofy.innertube.YouTube.playlist(cleanId).onSuccess { page ->
                         val episodes =
                             page.songs.mapIndexed { index, song ->
                                 com.Chenkham.ytmusicapi.models.Episode(

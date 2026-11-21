@@ -1,6 +1,6 @@
 ﻿/*
  * Echofy Project (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  *
  * Orquestador de proveedores de canvas.
@@ -11,10 +11,10 @@
 package com.Chenkham.Echofy.ui.player
 
 import com.Chenkham.Echofy.constants.CanvasSource
-import com.arturo254.opentune.canvas.models.CanvasArtwork
-import com.arturo254.opentune.canvas.providers.AppleMusicArtworkProvider
-import com.arturo254.opentune.canvas.providers.CustomCanvasProvider
-import com.arturo254.opentune.canvas.providers.TidalCanvasProvider
+import com.chenkham.Echofy.canvas.models.CanvasArtwork
+import com.chenkham.Echofy.canvas.providers.AppleMusicArtworkProvider
+import com.chenkham.Echofy.canvas.providers.CustomCanvasProvider
+import com.chenkham.Echofy.canvas.providers.TidalCanvasProvider
 import timber.log.Timber
 import java.util.Locale
 

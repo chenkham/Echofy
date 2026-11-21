@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.screens.settings
+﻿package com.Chenkham.Echofy.ui.screens.settings
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -34,8 +34,8 @@ import com.Chenkham.Echofy.ui.component.SettingsPage
 import com.Chenkham.Echofy.ui.component.SwitchPreference
 import com.Chenkham.Echofy.ui.component.TextFieldDialog
 import com.Chenkham.Echofy.utils.rememberPreference
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.utils.parseCookieString
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.utils.parseCookieString
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

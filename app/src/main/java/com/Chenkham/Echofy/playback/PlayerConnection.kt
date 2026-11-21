@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.playback
+﻿package com.Chenkham.Echofy.playback
 
 import android.content.Context
 import android.content.Intent
@@ -683,7 +683,7 @@ class PlayerConnection(
                             prefs.remove(com.Chenkham.Echofy.constants.VisitorDataTimestampKey)
                         }
                     }
-                    com.arturo254.opentune.innertube.YouTube.visitorData = null
+                    com.chenkham.Echofy.innertube.YouTube.visitorData = null
                     Log.w(TAG, "Silently reset visitorData due to HTTP 403 error")
                 }
             }

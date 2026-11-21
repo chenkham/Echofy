@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.component
+﻿package com.Chenkham.Echofy.ui.component
 
 import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -20,8 +20,8 @@ import com.Chenkham.Echofy.ui.menu.AlbumMenu
 import com.Chenkham.Echofy.ui.menu.ArtistMenu
 import com.Chenkham.Echofy.ui.menu.PlaylistMenu
 import com.Chenkham.Echofy.ui.menu.YouTubePlaylistMenu
-import com.arturo254.opentune.innertube.models.PlaylistItem
-import com.arturo254.opentune.innertube.models.WatchEndpoint
+import com.chenkham.Echofy.innertube.models.PlaylistItem
+import com.chenkham.Echofy.innertube.models.WatchEndpoint
 import kotlinx.coroutines.CoroutineScope
 
 @Composable

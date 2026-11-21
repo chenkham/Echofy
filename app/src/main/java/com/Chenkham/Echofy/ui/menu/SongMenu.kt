@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.menu
+﻿package com.Chenkham.Echofy.ui.menu
 
 import android.content.Intent
 import android.widget.Toast
@@ -87,7 +87,7 @@ import com.Chenkham.Echofy.ui.component.SongListItem
 import com.Chenkham.Echofy.ui.component.SonglinkShareDialog
 import com.Chenkham.Echofy.ui.component.TextFieldDialog
 import com.Chenkham.Echofy.utils.rememberPreference
-import com.arturo254.opentune.innertube.YouTube
+import com.chenkham.Echofy.innertube.YouTube
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

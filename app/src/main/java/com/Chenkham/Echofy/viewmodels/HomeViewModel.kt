@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.viewmodels
+﻿package com.Chenkham.Echofy.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
@@ -17,13 +17,13 @@ import com.Chenkham.Echofy.models.SimilarRecommendation
 import com.Chenkham.Echofy.utils.currentUtcOffsetSeconds
 import com.Chenkham.Echofy.utils.dataStore
 import com.Chenkham.Echofy.utils.reportException
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.PlaylistItem
-import com.arturo254.opentune.innertube.models.WatchEndpoint
-import com.arturo254.opentune.innertube.models.YTItem
-import com.arturo254.opentune.innertube.pages.ExplorePage
-import com.arturo254.opentune.innertube.pages.HomePage
-import com.arturo254.opentune.innertube.utils.completed
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.PlaylistItem
+import com.chenkham.Echofy.innertube.models.WatchEndpoint
+import com.chenkham.Echofy.innertube.models.YTItem
+import com.chenkham.Echofy.innertube.pages.ExplorePage
+import com.chenkham.Echofy.innertube.pages.HomePage
+import com.chenkham.Echofy.innertube.utils.completed
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers

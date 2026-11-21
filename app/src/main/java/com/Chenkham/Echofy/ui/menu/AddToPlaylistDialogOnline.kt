@@ -1,6 +1,6 @@
-/*
+﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -48,8 +48,8 @@ import com.Chenkham.Echofy.ui.component.DefaultDialog
 import com.Chenkham.Echofy.ui.component.ListDialog
 import com.Chenkham.Echofy.ui.component.ListItem
 import com.Chenkham.Echofy.ui.component.PlaylistListItem
-import com.arturo254.opentune.innertube.YouTube
-import com.arturo254.opentune.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.YouTube
+import com.chenkham.Echofy.innertube.models.SongItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll

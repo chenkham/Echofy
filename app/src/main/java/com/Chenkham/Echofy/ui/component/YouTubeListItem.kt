@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.component
+﻿package com.Chenkham.Echofy.ui.component
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandIn
 import androidx.compose.animation.fadeIn
@@ -39,11 +39,11 @@ import com.Chenkham.Echofy.constants.ListThumbnailSize
 import com.Chenkham.Echofy.constants.ThumbnailCornerRadius
 import com.Chenkham.Echofy.utils.joinByBullet
 import com.Chenkham.Echofy.utils.makeTimeString
-import com.arturo254.opentune.innertube.models.AlbumItem
-import com.arturo254.opentune.innertube.models.ArtistItem
-import com.arturo254.opentune.innertube.models.PlaylistItem
-import com.arturo254.opentune.innertube.models.SongItem
-import com.arturo254.opentune.innertube.models.YTItem
+import com.chenkham.Echofy.innertube.models.AlbumItem
+import com.chenkham.Echofy.innertube.models.ArtistItem
+import com.chenkham.Echofy.innertube.models.PlaylistItem
+import com.chenkham.Echofy.innertube.models.SongItem
+import com.chenkham.Echofy.innertube.models.YTItem
 import kotlinx.coroutines.flow.distinctUntilChanged
 
 /**

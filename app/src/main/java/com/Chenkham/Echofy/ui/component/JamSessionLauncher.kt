@@ -1,4 +1,4 @@
-package com.Chenkham.Echofy.ui.component
+﻿package com.Chenkham.Echofy.ui.component
 
 import android.content.Context
 import android.widget.Toast
@@ -7,8 +7,8 @@ import com.Chenkham.Echofy.db.entities.Playlist
 import com.Chenkham.Echofy.models.toMediaMetadata
 import com.Chenkham.Echofy.playback.PlayerConnection
 import com.Chenkham.Echofy.spotify.SpotifyPlaybackResolver
-import com.arturo254.opentune.spotify.Spotify
-import com.arturo254.opentune.spotify.models.SpotifyPlaylist
+import com.chenkham.Echofy.spotify.Spotify
+import com.chenkham.Echofy.spotify.models.SpotifyPlaylist
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first

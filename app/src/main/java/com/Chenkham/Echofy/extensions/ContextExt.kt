@@ -1,6 +1,6 @@
 ﻿/*
  * Echofy Project Original (2026)
- * Arturo254 (github.com/Arturo254)
+ * Echofy Project
  * Licensed Under GPL-3.0 | see git history for contributors
  */
 
@@ -13,7 +13,7 @@ import com.Chenkham.Echofy.constants.InnerTubeCookieKey
 import com.Chenkham.Echofy.constants.YtmSyncKey
 import com.Chenkham.Echofy.utils.dataStore
 import com.Chenkham.Echofy.utils.get
-import com.arturo254.opentune.innertube.utils.parseCookieString
+import com.chenkham.Echofy.innertube.utils.parseCookieString
 
 fun Context.isSyncEnabled(): Boolean {
     return dataStore.get(YtmSyncKey, true) && isUserLoggedIn()

@@ -1,11 +1,11 @@
-package com.Chenkham.Echofy.spotify
+﻿package com.Chenkham.Echofy.spotify
 
 import androidx.media3.common.MediaItem
 import com.Chenkham.Echofy.extensions.toMediaItem
 import com.Chenkham.Echofy.models.MediaMetadata
 import com.Chenkham.Echofy.playback.queues.Queue
-import com.arturo254.opentune.spotify.Spotify
-import com.arturo254.opentune.spotify.models.SpotifyTrack
+import com.chenkham.Echofy.spotify.Spotify
+import com.chenkham.Echofy.spotify.models.SpotifyTrack
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
