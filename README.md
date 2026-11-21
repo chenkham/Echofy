@@ -18,12 +18,8 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="assets/echofy.png" width="160" alt="Home Screen Placeholder"/>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/echofy.png" width="160" alt="Player Screen Placeholder"/>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/echofy.png" width="160" alt="Lyrics Screen Placeholder"/>
-  <p><em>(Screenshots coming soon!)</em></p>
+  <img src="assets/screenshots/player_screen.jpg" width="220" alt="Echofy Player Screen"/>
+  <p><em>(More screenshots coming soon!)</em></p>
 </div>
 
 ---
