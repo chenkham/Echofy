@@ -1,0 +1,105 @@
+package com.Chenkham.Echofy.spotify
+
+import androidx.media3.common.MediaItem
+import com.Chenkham.Echofy.extensions.toMediaItem
+import com.Chenkham.Echofy.models.MediaMetadata
+import com.Chenkham.Echofy.models.toMediaMetadata
+import com.arturo254.opentune.innertube.YouTube
+import com.arturo254.opentune.innertube.models.SongItem
+import com.arturo254.opentune.spotify.SpotifyMapper
+import com.arturo254.opentune.spotify.models.SpotifyTrack
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
+
+object SpotifyPlaybackResolver {
+    private const val MIN_MATCH_THRESHOLD = 0.35
+    private const val CACHE_MAX_SIZE = 512
+
+    private val mutex = Mutex()
+    private val cache =
+        object : LinkedHashMap<String, MediaMetadata>(CACHE_MAX_SIZE, 0.75f, true) {
+            override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, MediaMetadata>?): Boolean = size > CACHE_MAX_SIZE
+        }
+
+    suspend fun resolveToMediaItem(track: SpotifyTrack): MediaItem? = resolveToMetadata(track)?.toMediaItem()
+
+    suspend fun resolveToMetadata(track: SpotifyTrack): MediaMetadata? =
+        withContext(Dispatchers.IO) {
+            mutex.withLock {
+                cache[track.id]?.let { return@withContext it }
+            }
+
+            var searchResult =
+                YouTube
+                    .search(
+                        query = SpotifyMapper.buildSearchQuery(track),
+                        filter = YouTube.SearchFilter.FILTER_SONG,
+                    ).getOrNull()
+
+            var candidates =
+                searchResult?.items
+                    ?.filterIsInstance<SongItem>()
+                    ?.distinctBy { it.id }
+                    .orEmpty()
+
+            if (candidates.isEmpty()) {
+                val fallbackQuery = "${track.name} ${track.artists.joinToString(" ") { it.name }}".trim()
+                searchResult = YouTube.search(query = fallbackQuery, filter = YouTube.SearchFilter.FILTER_SONG).getOrNull()
+                candidates =
+                    searchResult?.items
+                        ?.filterIsInstance<SongItem>()
+                        ?.distinctBy { it.id }
+                        .orEmpty()
+            }
+            if (candidates.isEmpty()) return@withContext null
+
+            val precomputed =
+                mutex.withLock {
+                    SpotifyMapper.precompute(
+                        title = track.name,
+                        artist = track.artists.joinToString(" ") { it.name },
+                        durationMs = track.durationMs,
+                    )
+                }
+
+            val (best, score) =
+                mutex.withLock {
+                    candidates
+                        .map { candidate ->
+                            candidate to
+                                SpotifyMapper.matchScorePrecomputed(
+                                    precomputed = precomputed,
+                                    candidateTitle = candidate.title,
+                                    candidateArtist = candidate.artists.joinToString(" ") { it.name },
+                                    candidateDurationSec = candidate.duration,
+                                )
+                        }.maxByOrNull { it.second }
+                } ?: return@withContext null
+            if (score < MIN_MATCH_THRESHOLD) return@withContext null
+
+            val bestMetadata = best.toMediaMetadata()
+            val metadata =
+                bestMetadata.copy(
+                    thumbnailUrl = SpotifyMapper.getTrackThumbnail(track) ?: best.thumbnail,
+                    duration =
+                        if (track.durationMs > 0) {
+                            track.durationMs / 1000
+                        } else {
+                            best.duration
+                                ?: -1
+                        },
+                    explicit = track.explicit || best.explicit,
+                    album =
+                        track.album?.let { MediaMetadata.Album(id = it.id, title = it.name) }
+                            ?: bestMetadata.album,
+                    spotifyTrackId = track.id.takeIf(String::isNotBlank),
+                )
+
+            mutex.withLock {
+                cache[track.id] = metadata
+            }
+            metadata
+        }
+}

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Echofy
+Comment=Lightweight YouTube client
+Exec=echofy
+Icon=echofy
+Terminal=false
+Type=Application
+Categories=AudioVideo;Player;Network;

@@ -1,0 +1,254 @@
+package com.Chenkham.Echofy.ui.component
+
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import androidx.media3.exoplayer.offline.Download
+import com.Chenkham.Echofy.R
+import com.Chenkham.Echofy.utils.makeTimeString
+
+val GridMenuItemHeight = 56.dp
+
+/**
+ * Converted to a standard vertical list based on user request ("use lazy columns for all 3dot")
+ */
+@Composable
+fun GridMenu(
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
+    content: LazyListScope.() -> Unit,
+) {
+    LazyColumn(
+        modifier = modifier.fillMaxWidth(),
+        contentPadding = contentPadding,
+        content = content,
+    )
+}
+
+/**
+ * Standard list menu item composable for non-lazy usage
+ */
+@Composable
+fun SimpleGridMenuItem(
+    modifier: Modifier = Modifier,
+    @DrawableRes icon: Int,
+    title: String,
+    tint: Color = LocalContentColor.current,
+    enabled: Boolean = true,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(12.dp))
+                .height(GridMenuItemHeight)
+                .clickable(enabled = enabled, onClick = onClick)
+                .alpha(if (enabled) 1f else 0.5f)
+                .padding(horizontal = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            painter = painterResource(icon),
+            contentDescription = title,
+            tint = tint,
+            modifier = Modifier.size(24.dp),
+        )
+        Spacer(modifier = Modifier.width(16.dp))
+        Text(
+            text = title,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+    }
+}
+
+@Composable
+fun SimpleGridMenuItem(
+    modifier: Modifier = Modifier,
+    @DrawableRes icon: Int,
+    @StringRes title: Int,
+    tint: Color = LocalContentColor.current,
+    enabled: Boolean = true,
+    onClick: () -> Unit,
+) {
+    SimpleGridMenuItem(
+        modifier = modifier,
+        icon = icon,
+        title = stringResource(title),
+        tint = tint,
+        enabled = enabled,
+        onClick = onClick,
+    )
+}
+
+fun LazyListScope.GridMenuItem(
+    modifier: Modifier = Modifier,
+    @DrawableRes icon: Int,
+    tint: @Composable () -> Color = { LocalContentColor.current },
+    @StringRes title: Int,
+    enabled: Boolean = true,
+    onClick: () -> Unit,
+) = GridMenuItem(
+    modifier = modifier,
+    icon = {
+        Icon(
+            painter = painterResource(icon),
+            tint = tint(),
+            contentDescription = null,
+            modifier = Modifier.size(24.dp),
+        )
+    },
+    title = title,
+    enabled = enabled,
+    onClick = onClick,
+)
+
+fun LazyListScope.GridMenuItem(
+    modifier: Modifier = Modifier,
+    icon: @Composable BoxScope.() -> Unit,
+    @StringRes title: Int,
+    enabled: Boolean = true,
+    onClick: () -> Unit,
+) {
+    item {
+        Row(
+            modifier =
+                modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .height(GridMenuItemHeight)
+                    .clickable(
+                        enabled = enabled,
+                        onClick = onClick,
+                    )
+                    .alpha(if (enabled) 1f else 0.5f)
+                    .padding(horizontal = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Box(
+                modifier = Modifier.size(24.dp),
+                contentAlignment = Alignment.Center,
+                content = icon,
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            Text(
+                text = stringResource(title),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+        }
+    }
+}
+
+fun LazyListScope.DownloadGridMenu(
+    @Download.State state: Int?,
+    onRemoveDownload: () -> Unit,
+    onDownload: () -> Unit,
+) {
+    when (state) {
+        Download.STATE_COMPLETED -> {
+            GridMenuItem(
+                icon = R.drawable.offline,
+                title = R.string.remove_download,
+                onClick = onRemoveDownload,
+            )
+        }
+
+        Download.STATE_QUEUED, Download.STATE_DOWNLOADING -> {
+            GridMenuItem(
+                icon = {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(24.dp),
+                        strokeWidth = 2.dp,
+                    )
+                },
+                title = R.string.downloading,
+                onClick = onRemoveDownload,
+            )
+        }
+
+        else -> {
+            GridMenuItem(
+                icon = R.drawable.download,
+                title = R.string.download,
+                onClick = onDownload,
+            )
+        }
+    }
+}
+
+fun LazyListScope.SleepTimerGridMenu(
+    modifier: Modifier = Modifier,
+    sleepTimerTimeLeft: Long,
+    enabled: Boolean = true,
+    onClick: () -> Unit,
+) {
+    item {
+        Row(
+            modifier =
+                modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .height(GridMenuItemHeight)
+                    .clickable(onClick = onClick)
+                    .padding(horizontal = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(
+                painterResource(R.drawable.bedtime),
+                contentDescription = null,
+                modifier =
+                    Modifier
+                        .size(24.dp)
+                        .alpha(if (enabled) 1f else 0.5f),
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            Text(
+                text =
+                    if (enabled) {
+                        makeTimeString(sleepTimerTimeLeft)
+                    } else {
+                        stringResource(
+                            id = R.string.sleep_timer,
+                        )
+                    },
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+                maxLines = 1,
+            )
+        }
+    }
+}

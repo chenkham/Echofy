@@ -1,0 +1,139 @@
+package com.Chenkham.Echofy.spotify
+
+import androidx.media3.common.MediaItem
+import com.Chenkham.Echofy.extensions.toMediaItem
+import com.Chenkham.Echofy.models.MediaMetadata
+import com.Chenkham.Echofy.playback.queues.Queue
+import com.arturo254.opentune.spotify.Spotify
+import com.arturo254.opentune.spotify.models.SpotifyTrack
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.withContext
+
+class SpotifyPlaylistQueue(
+    private val playlistId: String,
+    private val title: String? = null,
+    private val initialTracks: List<SpotifyTrack> = emptyList(),
+    private val startIndex: Int = 0,
+    override val preloadItem: MediaMetadata? = null,
+) : Queue {
+    private val allTracks = mutableListOf<SpotifyTrack>()
+    private var resolveOffset = 0
+    private var apiFetchOffset = 0
+    private var apiTotal = 0
+    private var apiHasMore = true
+
+    override suspend fun getInitialStatus(): Queue.Status =
+        withContext(Dispatchers.IO) {
+            if (initialTracks.isNotEmpty()) {
+                allTracks += initialTracks
+                apiTotal = initialTracks.size
+                apiFetchOffset = apiTotal
+                apiHasMore = false
+            } else {
+                fetchNextApiPage()
+            }
+
+            while (startIndex >= allTracks.size && apiHasMore) {
+                fetchNextApiPage()
+            }
+
+            if (allTracks.isEmpty()) {
+                return@withContext Queue.Status(
+                    title = title,
+                    items = emptyList(),
+                    mediaItemIndex = 0,
+                )
+            }
+
+            val targetIndex = startIndex.coerceIn(allTracks.indices)
+            val windowStart = targetIndex
+            val windowEnd = (targetIndex + 5).coerceAtMost(allTracks.size)
+            val windowTracks = allTracks.subList(windowStart, windowEnd)
+
+            val windowResolved = mutableListOf<MediaItem>()
+            if (preloadItem != null) {
+                windowResolved.add(preloadItem.toMediaItem())
+                if (windowTracks.size > 1) {
+                    windowResolved.addAll(resolveTracks(windowTracks.drop(1)))
+                }
+            } else {
+                windowResolved.addAll(resolveTracks(windowTracks))
+            }
+
+            resolveOffset = windowEnd
+            if (windowResolved.isEmpty()) {
+                return@withContext Queue.Status(
+                    title = title,
+                    items = emptyList(),
+                    mediaItemIndex = 0,
+                )
+            }
+
+            Queue.Status(
+                title = title,
+                items = windowResolved,
+                mediaItemIndex = 0,
+            )
+        }
+
+    override fun hasNextPage(): Boolean = resolveOffset < allTracks.size || apiHasMore
+
+    override suspend fun nextPage(): List<MediaItem> =
+        withContext(Dispatchers.IO) {
+            if (resolveOffset >= allTracks.size && apiHasMore) {
+                fetchNextApiPage()
+            }
+            if (resolveOffset >= allTracks.size) return@withContext emptyList()
+
+            val end = (resolveOffset + RESOLVE_BATCH_SIZE).coerceAtMost(allTracks.size)
+            val batch = allTracks.subList(resolveOffset, end)
+            resolveOffset = end
+            resolveTracks(batch)
+        }
+
+    private suspend fun resolveTracks(tracks: List<SpotifyTrack>): List<MediaItem> = resolveTrackEntries(tracks).map { it.second }
+
+    private suspend fun resolveTrackEntries(tracks: List<SpotifyTrack>): List<Pair<Int, MediaItem>> =
+        buildList {
+            tracks.chunked(RESOLVE_BATCH_SIZE).forEachIndexed { chunkIndex, chunk ->
+                val chunkOffset = chunkIndex * RESOLVE_BATCH_SIZE
+                val resolvedChunk =
+                    coroutineScope {
+                        chunk
+                            .mapIndexed { index, track ->
+                                async {
+                                    SpotifyPlaybackResolver
+                                        .resolveToMediaItem(track)
+                                        ?.let { mediaItem -> chunkOffset + index to mediaItem }
+                                }
+                            }.awaitAll()
+                            .filterNotNull()
+                    }
+                addAll(resolvedChunk)
+            }
+        }
+
+    private suspend fun fetchNextApiPage() {
+        if (!apiHasMore) return
+        val result =
+            Spotify
+                .playlistTracks(
+                    playlistId = playlistId,
+                    limit = SPOTIFY_PAGE_SIZE,
+                    offset = apiFetchOffset,
+                ).getOrThrow()
+        apiTotal = result.total
+        val fetched = result.items.mapNotNull { it.track?.takeUnless(SpotifyTrack::isLocal) }
+        allTracks += fetched
+        apiFetchOffset += result.items.size
+        apiHasMore = apiFetchOffset < apiTotal
+    }
+
+    companion object {
+        private const val SPOTIFY_PAGE_SIZE = 50
+        private const val RESOLVE_BATCH_SIZE = 20
+    }
+}

@@ -1,0 +1,580 @@
+package com.Chenkham.Echofy.ui.screens.library
+
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.Chenkham.Echofy.LocalPlayerAwareWindowInsets
+import com.Chenkham.Echofy.R
+import com.Chenkham.Echofy.constants.CONTENT_TYPE_HEADER
+import com.Chenkham.Echofy.constants.CONTENT_TYPE_PLAYLIST
+import com.Chenkham.Echofy.constants.GridItemSize
+import com.Chenkham.Echofy.constants.GridItemsSizeKey
+import com.Chenkham.Echofy.constants.GridThumbnailHeight
+import com.Chenkham.Echofy.constants.InnerTubeCookieKey
+import com.Chenkham.Echofy.constants.LibraryViewType
+import com.Chenkham.Echofy.constants.PlaylistSortDescendingKey
+import com.Chenkham.Echofy.constants.PlaylistSortType
+import com.Chenkham.Echofy.constants.PlaylistSortTypeKey
+import com.Chenkham.Echofy.constants.PlaylistViewTypeKey
+import com.Chenkham.Echofy.constants.YtmSyncKey
+import com.Chenkham.Echofy.db.entities.Playlist
+import com.Chenkham.Echofy.db.entities.PlaylistEntity
+import com.Chenkham.Echofy.ui.component.CreatePlaylistDialog
+import com.Chenkham.Echofy.ui.component.HideOnScrollFAB
+import com.Chenkham.Echofy.ui.component.LibraryPlaylistGridItem
+import com.Chenkham.Echofy.ui.component.LibraryPlaylistListItem
+import com.Chenkham.Echofy.ui.component.LocalMenuState
+import com.Chenkham.Echofy.ui.component.SmartPlaylistGridItem
+import com.Chenkham.Echofy.ui.component.SmartPlaylistListItem
+import com.Chenkham.Echofy.ui.component.SortHeader
+import com.Chenkham.Echofy.utils.rememberEnumPreference
+import com.Chenkham.Echofy.utils.rememberPreference
+import com.Chenkham.Echofy.viewmodels.LibraryPlaylistsViewModel
+import com.arturo254.opentune.innertube.utils.parseCookieString
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import java.util.UUID
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun LibraryPlaylistsScreen(
+    navController: NavController,
+    filterContent: @Composable () -> Unit,
+    viewModel: LibraryPlaylistsViewModel = hiltViewModel(),
+    spotifyViewModel: com.Chenkham.Echofy.spotify.SpotifyLibraryViewModel = hiltViewModel(),
+    initialTextFieldValue: String? = null,
+    allowSyncing: Boolean = true,
+) {
+    val menuState = LocalMenuState.current
+    LocalHapticFeedback.current
+
+    val coroutineScope = rememberCoroutineScope()
+
+    var viewType by rememberEnumPreference(PlaylistViewTypeKey, LibraryViewType.GRID)
+    val (sortType, onSortTypeChange) =
+        rememberEnumPreference(
+            PlaylistSortTypeKey,
+            PlaylistSortType.CREATE_DATE,
+        )
+    val (sortDescending, onSortDescendingChange) =
+        rememberPreference(
+            PlaylistSortDescendingKey,
+            true,
+        )
+    val gridItemSize by rememberEnumPreference(GridItemsSizeKey, GridItemSize.SMALL)
+
+    val playlists by viewModel.allPlaylists.collectAsState()
+    val spotifyPlaylists by spotifyViewModel.playlists.collectAsState()
+
+    val topSize by viewModel.topValue.collectAsState(initial = 50)
+
+    val likedPlaylist =
+        Playlist(
+            playlist =
+                PlaylistEntity(
+                    id = UUID.randomUUID().toString(),
+                    name = stringResource(R.string.liked),
+                ),
+            songCount = 0,
+            thumbnails = emptyList(),
+        )
+
+    val downloadPlaylist =
+        Playlist(
+            playlist =
+                PlaylistEntity(
+                    id = UUID.randomUUID().toString(),
+                    name = stringResource(R.string.offline),
+                ),
+            songCount = 0,
+            thumbnails = emptyList(),
+        )
+
+    val topPlaylist =
+        Playlist(
+            playlist =
+                PlaylistEntity(
+                    id = UUID.randomUUID().toString(),
+                    name = stringResource(R.string.my_top) + " $topSize",
+                ),
+            songCount = 0,
+            thumbnails = emptyList(),
+        )
+
+    val cachePlaylist =
+        Playlist(
+            playlist =
+                PlaylistEntity(
+                    id = UUID.randomUUID().toString(),
+                    name = stringResource(R.string.cached_playlist),
+                ),
+            songCount = 0,
+            thumbnails = emptyList(),
+        )
+
+    val lazyListState = rememberLazyListState()
+    val lazyGridState = rememberLazyGridState()
+
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val scrollToTop =
+        backStackEntry?.savedStateHandle?.getStateFlow("scrollToTop", false)?.collectAsState()
+
+    val (innerTubeCookie) = rememberPreference(InnerTubeCookieKey, "")
+    remember(innerTubeCookie) {
+        "SAPISID" in parseCookieString(innerTubeCookie)
+    }
+
+    val (ytmSync) = rememberPreference(YtmSyncKey, true)
+
+    LaunchedEffect(Unit) {
+        if (ytmSync) {
+            withContext(Dispatchers.IO) {
+                viewModel.sync()
+            }
+        }
+    }
+
+    LaunchedEffect(scrollToTop?.value) {
+        if (scrollToTop?.value == true) {
+            when (viewType) {
+                LibraryViewType.LIST -> lazyListState.animateScrollToItem(0)
+                LibraryViewType.GRID -> lazyGridState.animateScrollToItem(0)
+            }
+            backStackEntry?.savedStateHandle?.set("scrollToTop", false)
+        }
+    }
+
+    var showCreatePlaylistDialog by rememberSaveable { mutableStateOf(false) }
+
+    if (showCreatePlaylistDialog) {
+        CreatePlaylistDialog(
+            onDismiss = { showCreatePlaylistDialog = false },
+            initialTextFieldValue = initialTextFieldValue,
+            allowSyncing = allowSyncing,
+        )
+    }
+
+    val headerContent = @Composable {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(start = 16.dp),
+        ) {
+            SortHeader(
+                sortType = sortType,
+                sortDescending = sortDescending,
+                onSortTypeChange = onSortTypeChange,
+                onSortDescendingChange = onSortDescendingChange,
+                sortTypeText = { sortType ->
+                    when (sortType) {
+                        PlaylistSortType.CREATE_DATE -> R.string.sort_by_create_date
+                        PlaylistSortType.NAME -> R.string.sort_by_name
+                        PlaylistSortType.SONG_COUNT -> R.string.sort_by_song_count
+                        PlaylistSortType.LAST_UPDATED -> R.string.sort_by_last_updated
+                        PlaylistSortType.CUSTOM -> R.string.sort_by_custom
+                    }
+                },
+            )
+
+            Spacer(Modifier.weight(1f))
+
+            Text(
+                text =
+                    pluralStringResource(
+                        R.plurals.n_playlist,
+                        playlists.size,
+                        playlists.size,
+                    ),
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+
+            IconButton(
+                onClick = {
+                    viewType = viewType.toggle()
+                },
+                modifier = Modifier.padding(start = 6.dp, end = 6.dp),
+            ) {
+                Icon(
+                    painter =
+                        painterResource(
+                            when (viewType) {
+                                LibraryViewType.LIST -> R.drawable.list
+                                LibraryViewType.GRID -> R.drawable.grid_view
+                            },
+                        ),
+                    tint = MaterialTheme.colorScheme.onSurface,
+                    contentDescription = null,
+                )
+            }
+        }
+    }
+
+    Box(
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        when (viewType) {
+            LibraryViewType.LIST -> {
+                LazyColumn(
+                    state = lazyListState,
+                    contentPadding = LocalPlayerAwareWindowInsets.current.asPaddingValues(),
+                ) {
+                    item(
+                        key = "filter",
+                        contentType = CONTENT_TYPE_HEADER,
+                    ) {
+                        filterContent()
+                    }
+
+                    item(
+                        key = "header",
+                        contentType = CONTENT_TYPE_HEADER,
+                    ) {
+                        headerContent()
+                    }
+
+                    item(
+                        key = "likedPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistListItem(
+                            title = stringResource(R.string.liked),
+                            icon = painterResource(R.drawable.favorite),
+                            gradientColors = listOf(Color(0xFF8E2DE2), Color(0xFF4A00E0)),
+                            onClick = { navController.navigate("auto_playlist/liked") },
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "downloadedPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistListItem(
+                            title = stringResource(R.string.offline),
+                            icon = painterResource(R.drawable.download),
+                            gradientColors = listOf(Color(0xFF11998e), Color(0xFF38ef7d)),
+                            onClick = { navController.navigate("auto_playlist/downloaded") },
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "neverPlayedPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistListItem(
+                            title = stringResource(R.string.never_played),
+                            icon = painterResource(R.drawable.trending_up),
+                            gradientColors = listOf(Color(0xFF396afc), Color(0xFF2948ff)),
+                            onClick = { navController.navigate("auto_playlist/never_played") },
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "recentlyAddedPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistListItem(
+                            title = stringResource(R.string.recently_added),
+                            icon = painterResource(R.drawable.history),
+                            gradientColors = listOf(Color(0xFF11998e), Color(0xFF38ef7d)),
+                            onClick = { navController.navigate("auto_playlist/recently_added") },
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "duplicatesPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistListItem(
+                            title = stringResource(R.string.duplicate_songs),
+                            icon = painterResource(R.drawable.queue_music),
+                            gradientColors = listOf(Color(0xFF8E2DE2), Color(0xFF4A00E0)),
+                            onClick = { navController.navigate("auto_playlist/duplicates") },
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "TopPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistListItem(
+                            title = stringResource(R.string.my_top) + " $topSize",
+                            icon = painterResource(R.drawable.trending_up),
+                            gradientColors = listOf(Color(0xFFf12711), Color(0xFFf5af19)),
+                            onClick = { navController.navigate("top_playlist/$topSize") },
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "cachePlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistListItem(
+                            title = stringResource(R.string.cached_playlist),
+                            icon = painterResource(R.drawable.cached),
+                            gradientColors = listOf(Color(0xFF667eea), Color(0xFF764ba2)),
+                            onClick = { navController.navigate("cache_playlist/cached") },
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    playlists.let { playlists ->
+                        if (playlists.isEmpty() && spotifyPlaylists.isEmpty()) {
+                            item {
+                            }
+                        }
+
+                        items(
+                            items = playlists,
+                            key = { it.id },
+                            contentType = { CONTENT_TYPE_PLAYLIST },
+                        ) { playlist ->
+                            LibraryPlaylistListItem(
+                                navController = navController,
+                                menuState = menuState,
+                                coroutineScope = coroutineScope,
+                                playlist = playlist,
+                                modifier = Modifier.animateItem(),
+                            )
+                        }
+
+                        if (spotifyPlaylists.isNotEmpty()) {
+                            items(
+                                items = spotifyPlaylists,
+                                key = { "spotify_${it.id}" },
+                                contentType = { CONTENT_TYPE_PLAYLIST },
+                            ) { playlist ->
+                                com.Chenkham.Echofy.ui.component.SpotifyLibraryPlaylistListItem(
+                                    playlist = playlist,
+                                    navController = navController,
+                                    modifier = Modifier.animateItem(),
+                                )
+                            }
+                        }
+                    }
+                }
+
+                HideOnScrollFAB(
+                    lazyListState = lazyListState,
+                    icon = R.drawable.add,
+                    onClick = {
+                        showCreatePlaylistDialog = true
+                    },
+                )
+            }
+
+            LibraryViewType.GRID -> {
+                LazyVerticalGrid(
+                    state = lazyGridState,
+                    columns =
+                        GridCells.Adaptive(
+                            minSize = GridThumbnailHeight + if (gridItemSize == GridItemSize.SMALL) (-24).dp else 24.dp,
+                        ),
+                    contentPadding = LocalPlayerAwareWindowInsets.current.asPaddingValues(),
+                ) {
+                    item(
+                        key = "filter",
+                        span = { GridItemSpan(maxLineSpan) },
+                        contentType = CONTENT_TYPE_HEADER,
+                    ) {
+                        filterContent()
+                    }
+
+                    item(
+                        key = "header",
+                        span = { GridItemSpan(maxLineSpan) },
+                        contentType = CONTENT_TYPE_HEADER,
+                    ) {
+                        headerContent()
+                    }
+
+                    item(
+                        key = "likedPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistGridItem(
+                            title = stringResource(R.string.liked),
+                            icon = painterResource(R.drawable.favorite),
+                            gradientColors = listOf(Color(0xFF8E2DE2), Color(0xFF4A00E0)),
+                            onClick = { navController.navigate("auto_playlist/liked") },
+                            fillMaxWidth = true,
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "downloadedPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistGridItem(
+                            title = stringResource(R.string.offline),
+                            icon = painterResource(R.drawable.download),
+                            gradientColors = listOf(Color(0xFF11998e), Color(0xFF38ef7d)),
+                            onClick = { navController.navigate("auto_playlist/downloaded") },
+                            fillMaxWidth = true,
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "neverPlayedPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistGridItem(
+                            title = stringResource(R.string.never_played),
+                            icon = painterResource(R.drawable.trending_up),
+                            gradientColors = listOf(Color(0xFF396afc), Color(0xFF2948ff)),
+                            onClick = { navController.navigate("auto_playlist/never_played") },
+                            fillMaxWidth = true,
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "recentlyAddedPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistGridItem(
+                            title = stringResource(R.string.recently_added),
+                            icon = painterResource(R.drawable.history),
+                            gradientColors = listOf(Color(0xFF11998e), Color(0xFF38ef7d)),
+                            onClick = { navController.navigate("auto_playlist/recently_added") },
+                            fillMaxWidth = true,
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "duplicatesPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistGridItem(
+                            title = stringResource(R.string.duplicate_songs),
+                            icon = painterResource(R.drawable.queue_music),
+                            gradientColors = listOf(Color(0xFF8E2DE2), Color(0xFF4A00E0)),
+                            onClick = { navController.navigate("auto_playlist/duplicates") },
+                            fillMaxWidth = true,
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "TopPlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistGridItem(
+                            title = stringResource(R.string.my_top) + " $topSize",
+                            icon = painterResource(R.drawable.trending_up),
+                            gradientColors = listOf(Color(0xFFf12711), Color(0xFFf5af19)),
+                            onClick = { navController.navigate("top_playlist/$topSize") },
+                            fillMaxWidth = true,
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    item(
+                        key = "cachePlaylist",
+                        contentType = { CONTENT_TYPE_PLAYLIST },
+                    ) {
+                        SmartPlaylistGridItem(
+                            title = stringResource(R.string.cached_playlist),
+                            icon = painterResource(R.drawable.cached),
+                            gradientColors = listOf(Color(0xFF667eea), Color(0xFF764ba2)),
+                            onClick = { navController.navigate("cache_playlist/cached") },
+                            fillMaxWidth = true,
+                            modifier = Modifier.animateItem(),
+                        )
+                    }
+
+                    playlists.let { playlists ->
+                        if (playlists.isEmpty() && spotifyPlaylists.isEmpty()) {
+                            item(span = { GridItemSpan(maxLineSpan) }) {
+                            }
+                        }
+
+                        items(
+                            items = playlists,
+                            key = { it.id },
+                            contentType = { CONTENT_TYPE_PLAYLIST },
+                        ) { playlist ->
+                            LibraryPlaylistGridItem(
+                                navController = navController,
+                                menuState = menuState,
+                                coroutineScope = coroutineScope,
+                                playlist = playlist,
+                                modifier = Modifier.animateItem(),
+                                context = LocalContext.current, // Pasamos el contexto actual para obtener la URI de la miniatura
+                            )
+                        }
+
+                        if (spotifyPlaylists.isNotEmpty()) {
+                            items(
+                                items = spotifyPlaylists,
+                                key = { "spotify_${it.id}" },
+                                contentType = { CONTENT_TYPE_PLAYLIST },
+                            ) { playlist ->
+                                com.Chenkham.Echofy.ui.component.SpotifyLibraryPlaylistGridItem(
+                                    playlist = playlist,
+                                    navController = navController,
+                                    fillMaxWidth = true,
+                                    modifier = Modifier.animateItem(),
+                                )
+                            }
+                        }
+                    }
+                }
+
+                HideOnScrollFAB(
+                    lazyListState = lazyGridState,
+                    icon = R.drawable.add,
+                    onClick = {
+                        showCreatePlaylistDialog = true
+                    },
+                )
+            }
+        }
+    }
+}

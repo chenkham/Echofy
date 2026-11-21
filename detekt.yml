@@ -1,0 +1,114 @@
+build:
+  maxIssues: -1
+  excludeCorrectable: false
+
+config:
+  validation: false
+  warningsAsErrors: false
+  checkExhaustiveness: false
+
+# --- Suppress Compose / project-specific noise ---
+naming:
+  active: true
+  FunctionNaming:
+    active: true
+    # Compose @Composable functions use PascalCase by convention
+    excludes: ['**/ui/**', '**/component/**', '**/screens/**', '**/player/**']
+  PackageNaming:
+    active: false  # com.Chenkham.Echofy uses uppercase — cannot rename without breaking applicationId
+
+style:
+  active: true
+  MagicNumber:
+    active: true
+    # Compose dp/sp sizing, color hex, animation durations are standard idioms
+    excludes: ['**/ui/**', '**/component/**', '**/screens/**', '**/player/**', '**/widget/**']
+    ignoreNumbers: ['-1', '0', '1', '2', '3', '4', '5', '10', '100']
+    ignoreHashCodeFunction: true
+    ignorePropertyDeclaration: true
+    ignoreLocalVariableDeclaration: false
+    ignoreConstantDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+    ignoreAnnotation: true
+    ignoreNamedArgument: true
+    ignoreEnums: true
+  MaxLineLength:
+    active: true
+    maxLineLength: 150  # Compose lambdas legitimately run long
+    excludeCommentStatements: true
+    excludePackageStatements: true
+    excludeImportStatements: true
+  NewLineAtEndOfFile:
+    active: false  # ktlint handles this
+  UnusedPrivateMember:
+    active: true
+    allowedNames: '(_|ignored|expected)'
+  UnusedPrivateProperty:
+    active: true
+    allowedNames: '(_|ignored|expected)'
+  UnusedPrivateClass:
+    active: true
+  ModifierOrder:
+    active: true
+
+complexity:
+  active: true
+  LargeClass:
+    active: true
+    threshold: 250
+  LongMethod:
+    active: true
+    threshold: 60
+  CyclomaticComplexMethod:
+    active: true
+    threshold: 15
+  TooManyFunctions:
+    active: true
+    thresholdInFiles: 25
+    thresholdInClasses: 20
+    thresholdInInterfaces: 15
+    thresholdInObjects: 20
+    thresholdInEnums: 15
+  NestedBlockDepth:
+    active: true
+    threshold: 4
+  LongParameterList:
+    active: true
+    functionThreshold: 6
+    constructorThreshold: 7
+    ignoreDefaultParameters: true
+    ignoreAnnotated: ['Composable']
+  StringLiteralDuplication:
+    active: true
+    threshold: 5
+    ignoreAnnotation: true
+    excludeStringsWithLessThan5Characters: true
+    ignoreStringsRegex: '$^'
+
+coroutines:
+  active: true
+  GlobalCoroutineUsage:
+    active: true
+  RedundantSuspendModifier:
+    active: true
+  SleepInsteadOfDelay:
+    active: true
+  SuspendFunWithCoroutineScopeReceiver:
+    active: true
+  SuspendFunWithFlowReturnType:
+    active: true
+  InjectDispatcher:
+    active: true
+
+potential-bugs:
+  active: true
+  UnreachableCode:
+    active: true
+  UnconditionalJumpStatementInLoop:
+    active: true
+  DontDowncastCollectionTypes:
+    active: true
+  UnnecessaryNotNullOperator:
+    active: true
+  UnsafeCast:
+    active: true
